@@ -1,0 +1,10 @@
+.navbar-right {
+    padding-right: 10px;
+}
+.navbar-right li {
+    margin-right: 10px;
+}
+
+.product-group-active {
+    color: #5cb85c;
+}

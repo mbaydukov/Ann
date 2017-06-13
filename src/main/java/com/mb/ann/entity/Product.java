@@ -1,7 +1,5 @@
 package com.mb.ann.entity;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -12,33 +10,29 @@ public class Product {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private Long storeId;
+    private Long productGroupId;
     private String url;
-    private String productCode;
     private Double price;
-    private String size;
-    private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-    @Type(type="true_false")
-    private boolean active = true;
+    private String description;
+    private Timestamp updateTime;
 
-
-    public Product(String url, String productCode, Double price, String size) {
+    public Product(Long productGroupId, String url, Double price, String description) {
+        this.productGroupId = productGroupId;
         this.url = url;
-        this.productCode = productCode;
         this.price = price;
-        this.size = size;
+        this.description = description;
     }
 
     public Long getId() {
         return id;
     }
 
-    public Long getStoreId() {
-        return storeId;
+    public Long getProductGroupId() {
+        return productGroupId;
     }
 
-    public void setStoreId(Long storeId) {
-        this.storeId = storeId;
+    public void setProductGroupId(Long productGroupId) {
+        this.productGroupId = productGroupId;
     }
 
     public String getUrl() {
@@ -49,14 +43,6 @@ public class Product {
         this.url = url;
     }
 
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
     public Double getPrice() {
         return price;
     }
@@ -65,23 +51,19 @@ public class Product {
         this.price = price;
     }
 
-    public String getSize() {
-        return size;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public Timestamp getUpdateTime() {
+        return updateTime;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
     }
 }

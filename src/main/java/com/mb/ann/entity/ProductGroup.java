@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="PRODUCT_QUEUE")
-public class ProductQueue {
+@Table(name="PRODUCT_GROUP")
+public class ProductGroup {
 
     public enum ParseStatus {
         PENDING, SUCCESS, FAIL
@@ -17,11 +17,15 @@ public class ProductQueue {
 
     private Long storeId;
     private String url;
-    private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    private String description;
+    private Timestamp updateTime;
     @Enumerated(EnumType.STRING)
     private ParseStatus status;
+    private String exception;
 
-    public ProductQueue(Long storeId, String url) {
+    public ProductGroup(){}
+
+    public ProductGroup(Long storeId, String url) {
         this.storeId = storeId;
         this.url = url;
     }
@@ -46,12 +50,20 @@ public class ProductQueue {
         this.url = url;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
     }
 
     public ParseStatus getStatus() {
@@ -60,5 +72,13 @@ public class ProductQueue {
 
     public void setStatus(ParseStatus status) {
         this.status = status;
+    }
+
+    public String getException() {
+        return exception;
+    }
+
+    public void setException(String exception) {
+        this.exception = exception;
     }
 }
